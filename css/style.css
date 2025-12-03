@@ -66,6 +66,19 @@ textarea:focus-visible {
     width: 158px;
     height: 76px;
 }
+.mobile-nav {
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+  transition: opacity .25s ease, transform .25s ease;
+}
+
+.mobile-nav.is-open {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
 
 .menu {
     width: 604px;
@@ -113,6 +126,37 @@ textarea:focus-visible {
 #main {
     background: rgba(240, 240, 247, 1);
 }
+
+.menu-toggle {
+  display: none;       
+  background: transparent;
+  border: none;
+  width: 32px;
+  height: 32px;
+  padding: 4px 0;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 24px;
+  height: 3px;
+  background: #111111;
+  border-radius: 3px;
+}
+
+.mobile-nav {
+  padding: 12px 0;
+}
+.mobile-nav ul li a {
+  padding: 12px 24px;
+  display: block;
+}
+
+
 
 /* css for hero */
 
@@ -180,11 +224,12 @@ textarea:focus-visible {
     width: 154px;
     background: var(--btn-bg);
     border: none;
-    border-radius: 5%;
+    border-radius: 4%;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 9px;
+    cursor: pointer;
 
 }
 
@@ -999,3 +1044,171 @@ body.modal-open {
   from { opacity: 1; transform: translateY(0); }
   to   { opacity: 0; transform: translateY(10px); }
 }
+
+@media (max-width: 1024px) {
+  .container {
+    padding: 0 32px;
+  }
+
+  .hero {
+    padding: 80px 0 60px;
+  }
+
+  .hero_inner {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .hero_content {
+    position: static;
+    width: 100%;
+  }
+
+  .hero-title {
+    width: 100%;
+    font-size: 40px;
+  }
+
+  .hero-subtitle {
+    width: 100%;
+  }
+
+  .illustration {
+    position: static;
+    display: none;
+    width: 100%;
+    max-width: 480px;
+    height: auto;
+  }
+
+  .stars {
+    display: none;
+  }
+
+  .projects {
+    width: 100%;
+    margin: 0 auto;
+    padding: 40px 32px;
+  }
+
+  .project-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 32px;
+  }
+
+  .card {
+    width: 100%;
+  }
+
+  .card__content {
+    width: 100%;
+  }
+
+  .contact-grid {
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .contact-form-container,
+  .contact-form-container form,
+  .contact-info,
+  .contact-card {
+    width: 100%;
+  }
+
+  .footer-left-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+  }
+
+  .inner_footer_left {
+    width: 100%;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+
+  .footer-logos {
+    width: 100%;
+    gap: 24px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  .header {
+    height: 72px;
+  }
+
+  .headerLogo img {
+    width: 120px;
+    height: auto;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  .menu {
+    position: absolute;
+    top: 72px;
+    left: 0;
+    right: 0;
+    background: #ffffff;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+    padding: 16px 16px 24px;
+    display: none; 
+    z-index: 900;
+    width: auto;
+  }
+
+  .menu-list {
+      display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .menu ul li {
+    text-align: left;
+    display: none;
+    flex: 0;
+  }
+
+  .header.nav-open .menu {
+    display: block;
+  }
+
+  .projects {
+    padding: 40px 16px;
+  }
+
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-title {
+    font-size: 32px;
+  }
+
+  .hero-subtitle {
+    font-size: 14px;
+  }
+
+  .footer-logos {
+    justify-content: center;
+  }
+
+  .inner_footer_left {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+

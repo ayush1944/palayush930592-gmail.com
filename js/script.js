@@ -1,5 +1,8 @@
 const menuItem = document.querySelectorAll("nav a");
 
+const header = document.querySelector(".header");
+const menuToggle = document.querySelector(".menu-toggle");
+
 // const sections = document.querySelectorAll("section, #home");
 const sections = document.querySelectorAll("section[id]");
 
@@ -23,7 +26,29 @@ const observer = new IntersectionObserver((coordinates) => {
   });
 }, options);
 
+if (menuToggle && header) {
+  menuToggle.addEventListener("click", () => {
+    const isOpen = header.classList.toggle("nav-open");
+    menuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+  });
+
+  menuItem.forEach((link) => {
+    link.addEventListener("click", () => {
+      header.classList.remove("nav-open");
+      menuToggle.setAttribute("aria-expanded", "false");
+    });
+  });
+}
+
+
 sections.forEach((section) => observer.observe(section));
+
+
+document.querySelector(".hire_btn").addEventListener("click", () => {
+  document.querySelector("#contact").scrollIntoView({
+    behavior: "smooth"
+  });
+});
 
 // carousel
 
